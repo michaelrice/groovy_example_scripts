@@ -10,12 +10,11 @@ void foo() throws TestException {
 
     try {
         println "hello world"
-        throw new Exception("yikes")
+        throw new TestException("yikes")
     }
     catch(Exception e) {
-        println e.message
-        println e.getClass()
-        throw new TestException(e.message)
+        println "re throwing"
+        throw e
     }
 }
 
@@ -25,4 +24,3 @@ try {
 catch(TestException te) {
     println "I caught te: ${te.message}"
 }
-
