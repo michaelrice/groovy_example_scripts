@@ -1,4 +1,4 @@
-def file = new File('esxcli_hardware.xml')
+def file = new File('esxcli_software.xml')
 
 def results = new XmlSlurper().parse(file).declareNamespace(['esxcli': 'http://www.vmware.com/Products/ESX/5.0/esxcli/'])
 
