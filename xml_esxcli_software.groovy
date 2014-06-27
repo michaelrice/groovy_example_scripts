@@ -4,12 +4,16 @@ def results = new XmlSlurper().parse(file).declareNamespace(['esxcli': 'http://w
 
 results = results.'root'.'list'.'structure'
 
-def result = results.find { it.'field'.'string' =~ /OpenManage/ }
+def result = results.findAll { it.'field'.'string' =~ /OpenM/ }
 
-def result_fields = result.field
-Map res = [:]
-result_fields.each {
-    res << ["${it.'@name'}": it]
+List res = []
+result.each {
+    def result_fields = it.field
+    Map ires = [:]
+    result_fields.each { myresult ->
+        ires << ["${myresult.'@name'}": myresult]
+    }
+    res << ires
 }
 
 println res
